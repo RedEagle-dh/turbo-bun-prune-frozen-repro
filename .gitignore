@@ -3,3 +3,4 @@ out
 .turbo
 .env
 .env.*
+packages/database/prisma/generated
