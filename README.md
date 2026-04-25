@@ -25,6 +25,24 @@ warn: Ignoring lockfile
 error: lockfile had changes, but lockfile is frozen
 ```
 
+## Canary Check
+
+`turbo@2.9.7-canary.13` still fails:
+
+```sh
+sed 's/turbo@2\\.6\\.2/turbo@2.9.7-canary.13/' apps/migrations/Dockerfile \
+	| docker build --no-cache -t turbo-bun-prune-frozen-repro-canary -f- .
+```
+
+Observed failure:
+
+```text
+error: Failed to resolve prod dependency 'eventemitter3' for package 'recharts'
+InvalidPackageInfo: failed to parse lockfile: 'bun.lock'
+warn: Ignoring lockfile
+error: lockfile had changes, but lockfile is frozen
+```
+
 The failure happens before Prisma generation. The Prisma package is included to match a migration-service Docker image shape, while `--ignore-scripts` prevents `postinstall` from running before the pruned source is copied.
 
 ## Control
