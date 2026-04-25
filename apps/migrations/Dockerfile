@@ -4,7 +4,7 @@ WORKDIR /app
 
 FROM base AS pruner
 
-RUN bun add -g turbo@2.6.2
+RUN bun add -g turbo@2.9.7-canary.13
 
 COPY . .
 

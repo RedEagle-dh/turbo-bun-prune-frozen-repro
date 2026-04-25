@@ -16,25 +16,7 @@ Expected result: the Docker build fails in the installer stage at:
 bun install --frozen-lockfile --ignore-scripts
 ```
 
-Observed failure with `oven/bun:1.3.13-alpine` and `turbo@2.6.2`:
-
-```text
-error: Failed to resolve prod dependency 'color-name' for package 'signale/chalk/ansi-styles/color-convert'
-InvalidPackageInfo: failed to parse lockfile: 'bun.lock'
-warn: Ignoring lockfile
-error: lockfile had changes, but lockfile is frozen
-```
-
-## Canary Check
-
-`turbo@2.9.7-canary.13` still fails:
-
-```sh
-sed 's/turbo@2\\.6\\.2/turbo@2.9.7-canary.13/' apps/migrations/Dockerfile \
-	| docker build --no-cache -t turbo-bun-prune-frozen-repro-canary -f- .
-```
-
-Observed failure:
+Observed failure with `oven/bun:1.3.13-alpine` and `turbo@2.9.7-canary.13`:
 
 ```text
 error: Failed to resolve prod dependency 'eventemitter3' for package 'recharts'
