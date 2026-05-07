@@ -23,6 +23,7 @@
 		"react-dom": "catalog:react19"
 	},
 	"devDependencies": {
+		"@asyncapi/cli": "4.1.0",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:react19",
 		"@types/react-dom": "catalog:react19",
